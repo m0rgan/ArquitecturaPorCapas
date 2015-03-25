@@ -1,46 +1,36 @@
 package co.com.eafit.conferre.conferencias.data.dac;
+
 import java.sql.Connection;
-import java.util.Collection;
-import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
-import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collection;
+
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.to.*;
+import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
+
 
 public class EspacioDAO implements DAOGenerico {
 
 java.sql.Connection  conn;
 	
-	public EspacioDAO(Connection connect) {
-		this.conn = connect;
+	public EspacioDAO(Connection conn2) {
+		this.conn = conn2;
 	}
 
 	@Override
 	public ObjetoTO crear(ObjetoTO parametro) {
 		EspacioTO espacio = null;
-		
 		try {
 			espacio = (EspacioTO) parametro;
-			PreparedStatement prep = conn.prepareStatement("INSERT INTO espacios values(?,?,?,?,?)");
+			PreparedStatement prep = conn.prepareStatement("INSERT INTO espacios values(?,?)");
 			prep.setString(1, espacio.getNombre());
-			prep.setString(2, espacio.getNombreConferencista());
-			prep.setString(3, espacio.getTipo());
-			
-			Date fecha = new Date(conf.getFecha().getTime());
-			prep.setDate(4, fecha);
-			prep.setInt(5, conf.getSillasDisponibles());
-			
+			prep.setBoolean(2, espacio.getDisponible());
 			int resultado = prep.executeUpdate();
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return conf;
+		return espacio;
 	}
 
 	@Override

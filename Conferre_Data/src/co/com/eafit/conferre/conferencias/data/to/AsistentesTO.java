@@ -7,6 +7,7 @@ public class AsistentesTO implements ObjetoTO {
 	private String nombre;
 	private String telefono;
 	private String correo;
+	
 	public String getId() {
 		return id;
 	}

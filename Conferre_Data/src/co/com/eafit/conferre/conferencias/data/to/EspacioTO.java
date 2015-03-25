@@ -5,6 +5,7 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 public class EspacioTO implements ObjetoTO {
 	private String nombre;
 	private Boolean disponible;
+	
 	public String getNombre() {
 		return nombre;
 	}

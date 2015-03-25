@@ -24,7 +24,7 @@ public class EventoDAO implements DAOGenerico {
 		
 		try {
 			even = (EventoTO) parametro;
-			PreparedStatement prep = conn.prepareStatement("INSERT INTO conferencias values(?,?,?,?,?)");
+			PreparedStatement prep = conn.prepareStatement("INSERT INTO eventos values(?,?,?,?,?)");
 			prep.setString(1, even.getUbicacion());
 			prep.setString(2, even.getTipo_evento());
 			prep.setString(3, even.getNumero_de_personas());

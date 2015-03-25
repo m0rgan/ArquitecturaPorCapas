@@ -24,7 +24,7 @@ public class ClienteDAO implements DAOGenerico {
 		
 		try {
 			clien = (ClienteTO) parametro;
-			PreparedStatement prep = conn.prepareStatement("INSERT INTO conferencias values(?,?,?)");
+			PreparedStatement prep = conn.prepareStatement("INSERT INTO clientes values(?,?,?)");
 			prep.setString(1, clien.getNombre());
 			prep.setString(2, clien.getTelefono());
 			prep.setString(3, clien.getCorreo());

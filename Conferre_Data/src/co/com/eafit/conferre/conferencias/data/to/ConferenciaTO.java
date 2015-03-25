@@ -5,6 +5,15 @@ import java.util.Date;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class ConferenciaTO implements ObjetoTO {
+	
+	private String nombre;
+	private String nombreConferencista;
+	private String tipo;
+	private Date fecha;
+	private int sillasDisponibles;
+	private String id;
+	private EspacioTO espacio;
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,10 +50,13 @@ public class ConferenciaTO implements ObjetoTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	private String nombre;
-	private String nombreConferencista;
-	private String tipo;
-	private Date fecha;
-	private int sillasDisponibles;
-	private String id;
+	public EspacioTO getEspacio() {
+		return espacio;
+	}
+	public void setEspacio(EspacioTO espacio) {
+		this.espacio = espacio;
+	}
+	
+	
+	
 }

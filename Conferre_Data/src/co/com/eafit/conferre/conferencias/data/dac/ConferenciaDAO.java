@@ -23,20 +23,16 @@ public class ConferenciaDAO implements DAOGenerico {
 	@Override
 	public ObjetoTO crear(ObjetoTO parametro) {
 		ConferenciaTO conf = null;
-		
 		try {
 			conf = (ConferenciaTO) parametro;
 			PreparedStatement prep = conn.prepareStatement("INSERT INTO conferencias values(?,?,?,?,?)");
 			prep.setString(1, conf.getNombre());
 			prep.setString(2, conf.getNombreConferencista());
 			prep.setString(3, conf.getTipo());
-			
 			Date fecha = new Date(conf.getFecha().getTime());
 			prep.setDate(4, fecha);
 			prep.setInt(5, conf.getSillasDisponibles());
-			
-			int resultado = prep.executeUpdate();
-			
+			int resultado = prep.executeUpdate();			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -45,19 +41,15 @@ public class ConferenciaDAO implements DAOGenerico {
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		// TODO Auto-generated method stub
 		ConferenciaTO confparametros = (ConferenciaTO) parametros;
 		Collection<ObjetoTO> conf = null;
 		PreparedStatement preparedStatement = null;
 		String selectSQL = "SELECT * FROM Conferencia WHERE Conferenciaid = ?";
- 
 		try {
 			preparedStatement = conn.prepareStatement(selectSQL);
 			preparedStatement.setString(1, confparametros.getId());
- 
-			// execute select SQL stetement
+			// execute select SQL statement
 			ResultSet rs = preparedStatement.executeQuery();
- 
 			while (rs.next()) {
 				ConferenciaTO c = new ConferenciaTO();
 				EspacioTO e = new EspacioTO();
@@ -70,35 +62,25 @@ public class ConferenciaDAO implements DAOGenerico {
 				e.setNombre(rs.getString("NombreEspacio"));
 				e.setDisponible(rs.getBoolean("DisponibleEspacio"));
 				c.setEspacio(e);
-				
 				conf.add(c);
- 
 			}
- 
 		} catch (SQLException e) {
- 
 			System.out.println(e.getMessage());
- 
 		} finally {
- 
 			if (preparedStatement != null) {
 				try {
 					preparedStatement.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
- 
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
- 
 		}
 		return conf;
 	}

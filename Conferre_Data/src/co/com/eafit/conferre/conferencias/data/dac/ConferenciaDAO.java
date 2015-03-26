@@ -3,12 +3,14 @@ package co.com.eafit.conferre.conferencias.data.dac;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
+import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
 public class ConferenciaDAO implements DAOGenerico {
 
@@ -44,7 +46,61 @@ public class ConferenciaDAO implements DAOGenerico {
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
 		// TODO Auto-generated method stub
-		return null;
+		ConferenciaTO confparametros = (ConferenciaTO) parametros;
+		Collection<ObjetoTO> conf = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT * FROM Conferencia WHERE Conferenciaid = ?";
+ 
+		try {
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, confparametros.getId());
+ 
+			// execute select SQL stetement
+			ResultSet rs = preparedStatement.executeQuery();
+ 
+			while (rs.next()) {
+				ConferenciaTO c = new ConferenciaTO();
+				EspacioTO e = new EspacioTO();
+				c.setId(rs.getString("Conferenciaid"));
+				c.setNombre(rs.getString("Nombre"));
+				c.setNombreConferencista(rs.getString("Conferencista"));
+				c.setFecha(Date.valueOf(rs.getString("Fecha")));
+				c.setTipo(rs.getString("Tipo"));
+				c.setSillasDisponibles(Integer.parseInt(rs.getString("Sillas")));
+				e.setNombre(rs.getString("NombreEspacio"));
+				e.setDisponible(rs.getBoolean("DisponibleEspacio"));
+				c.setEspacio(e);
+				
+				conf.add(c);
+ 
+			}
+ 
+		} catch (SQLException e) {
+ 
+			System.out.println(e.getMessage());
+ 
+		} finally {
+ 
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+ 
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+ 
+		}
+		return conf;
 	}
 
 	@Override

@@ -80,8 +80,21 @@ public class SillasDAO implements DAOGenerico {
 	 */
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		SillasTO sillas = null;
+		int resultado = 0;
+		
+		try {
+			sillas = (SillasTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM Sillas WHERE Sillasid = ?");
+			prep.setString(1, sillas.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

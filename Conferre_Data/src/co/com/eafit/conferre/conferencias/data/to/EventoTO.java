@@ -6,20 +6,11 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class EventoTO implements ObjetoTO {
 	private String id;
-<<<<<<< HEAD
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-=======
->>>>>>> origin/master
 	private String ubicacion;
 	private String tipo_evento;
 	private String id_conferencia;
 	private Date fecha;
-	private int hora;
+	private String hora;
 	private String numero_de_personas;
 	
 	public String getId() {
@@ -52,10 +43,10 @@ public class EventoTO implements ObjetoTO {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public int getHora() {
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(int hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 	public String getNumero_de_personas() {

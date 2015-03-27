@@ -12,6 +12,7 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
+import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
 public class AsistentesDAO implements DAOGenerico {
@@ -104,8 +105,21 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		AsistentesTO asis = null;
+		int resultado = 0;
+		
+		try {
+			asis = (AsistentesTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM Asistentes WHERE Asistenteid = ?");
+			prep.setString(1, asis.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

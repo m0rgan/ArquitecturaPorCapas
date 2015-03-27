@@ -11,6 +11,7 @@ import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
 import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
+import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 
 public class ClienteDAO implements DAOGenerico {
 
@@ -107,8 +108,21 @@ public class ClienteDAO implements DAOGenerico {
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		ClienteTO clien = null;
+		int resultado = 0;
+		
+		try {
+			clien = (ClienteTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM Clientes WHERE Clienteid = ?");
+			prep.setString(1, clien.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

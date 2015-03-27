@@ -116,8 +116,21 @@ public class ConferenciaDAO implements DAOGenerico {
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		ConferenciaTO conf = null;
+		int resultado = 0;
+		
+		try {
+			conf = (ConferenciaTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM Conferencias WHERE Conferenciaid = ?");
+			prep.setString(1, conf.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

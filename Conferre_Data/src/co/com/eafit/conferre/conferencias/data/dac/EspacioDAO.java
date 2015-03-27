@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
+import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
@@ -96,8 +97,21 @@ java.sql.Connection  conn;
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		EspacioTO espacio = null;
+		int resultado = 0;
+		
+		try {
+			espacio = (EspacioTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM Espacios WHERE Espacioid = ?");
+			prep.setString(1, espacio.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

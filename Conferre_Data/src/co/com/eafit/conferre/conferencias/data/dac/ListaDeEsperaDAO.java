@@ -12,6 +12,7 @@ import java.util.Collection;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
+import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.ListaDeEsperaTO;
 import co.com.eafit.conferre.conferencias.data.to.ListaDeEsperaTO;
 
@@ -103,8 +104,21 @@ public class ListaDeEsperaDAO implements DAOGenerico {
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		ListaDeEsperaTO list = null;
+		int resultado = 0;
+		
+		try {
+			list = (ListaDeEsperaTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM ListaDeEspera WHERE ListaDeEsperaid = ?");
+			prep.setString(1, list.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

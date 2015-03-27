@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
+import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 
@@ -90,32 +91,45 @@ public class EventoDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		EventoTO espacio = null;
+		EventoTO evento = null;
 		
 		try {
-			espacio = (EventoTO) nuevoObjeto;
+			evento = (EventoTO) nuevoObjeto;
 			PreparedStatement prep = conn.prepareStatement("UPDATE Eventos SET Ubicacion = ?, TipoEvento = ?, Fecha = ?, Hora = ?, NumeroDePersonas = ?, IdConferencia = ? WHERE Eventoid = ?");
-			prep.setString(1, espacio.getUbicacion());
-			prep.setString(2, espacio.getTipo_evento());
-			Date fecha = new Date(espacio.getFecha().getTime());
+			prep.setString(1, evento.getUbicacion());
+			prep.setString(2, evento.getTipo_evento());
+			Date fecha = new Date(evento.getFecha().getTime());
 			prep.setDate(3, fecha);
-			prep.setString(4, espacio.getHora());
-			prep.setString(5, espacio.getNumero_de_personas());
-			prep.setString(5, espacio.getId_conferencia());
-			prep.setString(5, espacio.getId());
+			prep.setString(4, evento.getHora());
+			prep.setString(5, evento.getNumero_de_personas());
+			prep.setString(5, evento.getId_conferencia());
+			prep.setString(5, evento.getId());
 			int resultado = prep.executeUpdate();
 			prep.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return espacio;
+		return evento;
 	}
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		// TODO Auto-generated method stub
-		return 0;
+		EventoTO evento = null;
+		int resultado = 0;
+		
+		try {
+			evento = (EventoTO) objetoaBorrar;
+			PreparedStatement prep = conn.prepareStatement("DELETE FROM Eventos WHERE Eventoid = ?");
+			prep.setString(1, evento.getId());
+
+			resultado = prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
 	}
 
 }

@@ -19,7 +19,7 @@ public class ClienteDAO implements DAOGenerico {
 	}
 	
 	@Override
-	public ObjetoTO crear(ObjetoTO parametro) {
+	public ClienteTO crear(ObjetoTO parametro) {
 		ClienteTO clien = null;
 		
 		try {

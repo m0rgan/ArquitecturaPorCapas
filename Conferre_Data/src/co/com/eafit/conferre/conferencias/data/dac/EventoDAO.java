@@ -19,7 +19,7 @@ public class EventoDAO implements DAOGenerico {
 	}
 
 	@Override
-	public ObjetoTO crear(ObjetoTO parametro) {
+	public EventoTO crear(ObjetoTO parametro) {
 		EventoTO even = null;
 		
 		try {

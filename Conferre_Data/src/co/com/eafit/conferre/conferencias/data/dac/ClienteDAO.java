@@ -9,6 +9,7 @@ import java.util.Collection;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
+import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
 
 public class ClienteDAO implements DAOGenerico {
 
@@ -19,7 +20,7 @@ public class ClienteDAO implements DAOGenerico {
 	}
 	
 	@Override
-	public ClienteTO crear(ObjetoTO parametro) {
+	public ObjetoTO crear(ObjetoTO parametro) {
 		ClienteTO clien = null;
 		
 		try {
@@ -46,8 +47,25 @@ public class ClienteDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
+		ClienteTO clien = null;
+		
+		try {
+			clien = (ClienteTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE Clientes SET Nombre = ?, Telefono = ?, Correo = ?, Usuario = ?, Contraseña = ? WHERE Clienteid = ?");
+			prep.setString(1, clien.getNombre());
+			prep.setString(2, clien.getTelefono());
+			prep.setString(3, clien.getCorreo());
+			prep.setString(4, clien.getUsuario());
+			prep.setString(5, clien.getContraseña());
+			prep.setString(6, clien.getId());
+			
+			int resultado = prep.executeUpdate();
+			prep.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return clien;
 	}
 
 	@Override

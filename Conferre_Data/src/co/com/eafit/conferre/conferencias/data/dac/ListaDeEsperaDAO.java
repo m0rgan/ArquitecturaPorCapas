@@ -2,12 +2,14 @@ package co.com.eafit.conferre.conferencias.data.dac;
 
 import java.sql.Array;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
+import co.com.eafit.conferre.conferencias.data.to.ListaDeEsperaTO;
 import co.com.eafit.conferre.conferencias.data.to.ListaDeEsperaTO;
 
 public class ListaDeEsperaDAO implements DAOGenerico {
@@ -42,8 +44,22 @@ public class ListaDeEsperaDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
+		ListaDeEsperaTO list = null;
+		
+		try {
+			list = (ListaDeEsperaTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE ListaDeEspera SET Asistentes = ?, IdConferencia = ?, IdEvento = ? WHERE ListaDeEsperaid = ?");
+			prep.setString(1, list.getAsistentes())
+			prep.setString(2, list.getId_conferencia());
+			prep.setString(3, list.getId_evento());
+			prep.setString(4, list.getId());
+			int resultado = prep.executeUpdate();
+			prep.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override

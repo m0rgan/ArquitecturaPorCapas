@@ -9,6 +9,7 @@ import java.util.Collection;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.EventoTO;
+import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 
 public class EventoDAO implements DAOGenerico {
 	
@@ -49,8 +50,26 @@ public class EventoDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
+		EventoTO espacio = null;
+		
+		try {
+			espacio = (EventoTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE Eventos SET Ubicacion = ?, TipoEvento = ?, Fecha = ?, Hora = ?, NumeroDePersonas = ?, IdConferencia = ? WHERE Eventoid = ?");
+			prep.setString(1, espacio.getUbicacion());
+			prep.setString(2, espacio.getTipo_evento());
+			Date fecha = new Date(espacio.getFecha().getTime());
+			prep.setDate(3, fecha);
+			prep.setString(4, espacio.getHora());
+			prep.setString(5, espacio.getNumero_de_personas());
+			prep.setString(5, espacio.getId_conferencia());
+			prep.setString(5, espacio.getId());
+			int resultado = prep.executeUpdate();
+			prep.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return espacio;
 	}
 
 	@Override

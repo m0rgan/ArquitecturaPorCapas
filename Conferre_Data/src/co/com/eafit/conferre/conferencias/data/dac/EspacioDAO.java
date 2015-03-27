@@ -8,6 +8,7 @@ import java.util.Collection;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
+import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
 
 public class EspacioDAO implements DAOGenerico {
@@ -41,8 +42,22 @@ java.sql.Connection  conn;
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
+		EspacioTO espacio = null;
+		
+		try {
+			espacio = (EspacioTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE Espacios SET Nombre = ?, Disponible = ? WHERE Espacioid = ?");
+			prep.setString(1, espacio.getNombre());
+			prep.setString(2, espacio.getDisponible().toString());
+			prep.setString(3, espacio.getId());
+			
+			int resultado = prep.executeUpdate();
+			prep.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return espacio;
 	}
 
 	@Override

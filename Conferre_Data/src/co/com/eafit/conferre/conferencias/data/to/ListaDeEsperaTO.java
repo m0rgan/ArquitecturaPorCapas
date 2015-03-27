@@ -9,7 +9,14 @@ public class ListaDeEsperaTO implements ObjetoTO {
 	private ArrayList<AsistentesTO> asistentes = new ArrayList<AsistentesTO>();
 	private String id_conferencia;
 	private String id_evento;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public ArrayList<AsistentesTO> getAsistentes() {
 		return asistentes;
 	}

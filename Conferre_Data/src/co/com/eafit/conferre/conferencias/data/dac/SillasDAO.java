@@ -13,6 +13,7 @@ import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.SillasTO;
+import co.com.eafit.conferre.conferencias.data.to.SillasTO;
 
 /**
  * @author Moreno
@@ -57,8 +58,22 @@ public class SillasDAO implements DAOGenerico {
 	 */
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
+		SillasTO list = null;
+		
+		try {
+			list = (SillasTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE Sillas SET Numero = ?, Tipo = ? WHERE Sillaid = ?");
+			prep.setString(1, list.getAsistentes())
+			prep.setString(2, list.getId_conferencia());
+			prep.setString(3, list.getId_evento());
+			prep.setString(4, list.getId());
+			int resultado = prep.executeUpdate();
+			prep.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	/* (non-Javadoc)

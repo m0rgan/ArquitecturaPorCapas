@@ -32,6 +32,4 @@ public class AsistentesTO implements ObjetoTO {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	
-
 }

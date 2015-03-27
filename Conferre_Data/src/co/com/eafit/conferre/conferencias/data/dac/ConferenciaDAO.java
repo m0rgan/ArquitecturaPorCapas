@@ -53,39 +53,39 @@ public class ConferenciaDAO implements DAOGenerico {
 			preparedStatement.setString(1, confparametros.getId());
 			// execute select SQL statement
 			ResultSet rs = preparedStatement.executeQuery();
-			while (rs.next()) {
-				ConferenciaTO c = new ConferenciaTO();
-				EspacioTO e = new EspacioTO();
-				c.setId(rs.getString("Conferenciaid"));
-				c.setNombre(rs.getString("Nombre"));
-				c.setNombreConferencista(rs.getString("Conferencista"));
-				c.setFecha(Date.valueOf(rs.getString("Fecha")));
-				c.setTipo(rs.getString("Tipo"));
-				c.setSillasDisponibles(Integer.parseInt(rs.getString("Sillas")));
-				e.setNombre(rs.getString("NombreEspacio"));
-				e.setDisponible(rs.getBoolean("DisponibleEspacio"));
-				c.setEspacio(e);
-				conf.add(c);
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			if (preparedStatement != null) {
-				try {
-					preparedStatement.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
+				while (rs.next()) {
+					ConferenciaTO c = new ConferenciaTO();
+					EspacioTO e = new EspacioTO();
+					c.setId(rs.getString("Conferenciaid"));
+					c.setNombre(rs.getString("Nombre"));
+					c.setNombreConferencista(rs.getString("Conferencista"));
+					c.setFecha(Date.valueOf(rs.getString("Fecha")));
+					c.setTipo(rs.getString("Tipo"));
+					c.setSillasDisponibles(Integer.parseInt(rs.getString("Sillas")));
+					e.setNombre(rs.getString("NombreEspacio"));
+					e.setDisponible(rs.getBoolean("DisponibleEspacio"));
+					c.setEspacio(e);
+					conf.add(c);
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				if (preparedStatement != null) {
+					try {
+						preparedStatement.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return conf;
+			return conf;
 	}
 
 	@Override

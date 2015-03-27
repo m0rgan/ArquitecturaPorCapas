@@ -2,6 +2,7 @@ package co.com.eafit.conferre.conferencias.data.dac;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -36,8 +37,42 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		// TODO Auto-generated method stub
-		return null;
+		AsistentesTO asisparametros = (AsistentesTO) parametros;
+		Collection<ObjetoTO> asis = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT * FROM Asistentes WHERE Asistentesid = ?";
+		try{
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, asisparametros.getId());;
+			// execute select SQL statement
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				AsistentesTO a = new AsistentesTO();
+				a.setId(rs.getString("Asistentesid"));
+				a.setNombre(rs.getString("Nombre"));
+				a.setTelefono(rs.getString("Telefono"));
+				a.setCorreo(rs.getString("Correo"));
+				asis.add(a);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return asis;
 	}
 
 	@Override

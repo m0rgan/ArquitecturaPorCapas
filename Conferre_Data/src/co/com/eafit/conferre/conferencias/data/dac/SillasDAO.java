@@ -6,6 +6,7 @@ package co.com.eafit.conferre.conferencias.data.dac;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -48,8 +49,43 @@ public class SillasDAO implements DAOGenerico {
 	
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		// TODO Auto-generated method stub
-		return null;
+		SillasTO sillaparametros = (SillasTO) parametros;
+		Collection<ObjetoTO> silla = null;
+		PreparedStatement preparedStatement = null;
+
+		String selectSQL = "SELECT * FROM Sillas WHERE Sillasid = ?";
+
+			try {
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, sillaparametros.getId());
+			// execute select SQL statement
+			ResultSet rs = preparedStatement.executeQuery();
+				while (rs.next()) {
+					SillasTO s = new SillasTO();
+					s.setId(rs.getString("Sillasid"));
+					s.setNumero(rs.getString("Numero"));
+					s.setTipo(rs.getString("Tipo"));
+					silla.add(s);
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				if (preparedStatement != null) {
+					try {
+						preparedStatement.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}	
+		return silla;
 	}
 
 	/* (non-Javadoc)

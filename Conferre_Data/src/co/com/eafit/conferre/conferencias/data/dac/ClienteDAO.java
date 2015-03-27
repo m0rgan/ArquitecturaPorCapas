@@ -3,6 +3,7 @@ package co.com.eafit.conferre.conferencias.data.dac;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -19,7 +20,7 @@ public class ClienteDAO implements DAOGenerico {
 	}
 	
 	@Override
-	public ClienteTO crear(ObjetoTO parametro) {
+	public ObjetoTO crear(ObjetoTO parametro) {
 		ClienteTO clien = null;
 		
 		try {
@@ -40,8 +41,44 @@ public class ClienteDAO implements DAOGenerico {
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		// TODO Auto-generated method stub
-		return null;
+		ClienteTO clienparametros = (ClienteTO) parametros;
+		Collection<ObjetoTO> clien = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT * FROM Cliente WHERE Clienteid = ?";
+		try{
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, clienparametros.getId());;
+			// execute select SQL statement
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				ClienteTO c = new ClienteTO();
+				c.setId(rs.getString("Clienteid"));
+				c.setNombre(rs.getString("Nombre"));
+				c.setTelefono(rs.getString("Telefono"));
+				c.setCorreo(rs.getString("Correo"));
+				c.setUsuario(rs.getString("Usuario"));
+				c.setContraseña(rs.getString("Contraseña"));
+				clien.add(c);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return clien;
 	}
 
 	@Override

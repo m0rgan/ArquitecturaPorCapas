@@ -9,6 +9,7 @@ public class ClienteTO implements ObjetoTO {
 	private String correo;
 	private String usuario;
 	private String contraseña;
+	
 	public String getId() {
 		return id;
 	}

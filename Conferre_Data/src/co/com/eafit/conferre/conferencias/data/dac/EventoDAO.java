@@ -3,6 +3,7 @@ package co.com.eafit.conferre.conferencias.data.dac;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -20,7 +21,7 @@ public class EventoDAO implements DAOGenerico {
 	}
 
 	@Override
-	public EventoTO crear(ObjetoTO parametro) {
+	public ObjetoTO crear(ObjetoTO parametro) {
 		EventoTO even = null;
 		
 		try {
@@ -44,8 +45,47 @@ public class EventoDAO implements DAOGenerico {
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		// TODO Auto-generated method stub
-		return null;
+		EventoTO eventparametros = (EventoTO) parametros;
+		Collection<ObjetoTO> event = null;
+		PreparedStatement preparedStatement = null;
+
+		String selectSQL = "SELECT * FROM Evento WHERE Eventoid = ?";
+
+			try {
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, eventparametros.getId());
+			// execute select SQL statement
+			ResultSet rs = preparedStatement.executeQuery();
+				while (rs.next()) {
+					EventoTO e = new EventoTO();
+					e.setId(rs.getString("Eventoid"));
+					e.setUbicacion(rs.getString("Ubicacion"));
+					e.setTipo_evento(rs.getString("Tipo Evento"));
+					e.setId_conferencia(rs.getString("Id Conferencia"));
+					e.setFecha(Date.valueOf(rs.getString("Fecha")));
+					e.setHora(rs.getInt("Hora"));
+					e.setNumero_de_personas(rs.getString("Numero de Personas"));
+					event.add(e);
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				if (preparedStatement != null) {
+					try {
+						preparedStatement.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}	
+		return event;
 	}
 
 	@Override

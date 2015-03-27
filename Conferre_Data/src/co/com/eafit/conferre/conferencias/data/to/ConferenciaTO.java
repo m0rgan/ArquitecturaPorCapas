@@ -5,7 +5,6 @@ import java.util.Date;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class ConferenciaTO implements ObjetoTO {
-	
 	private String nombre;
 	private String nombreConferencista;
 	private String tipo;

@@ -2,6 +2,7 @@ package co.com.eafit.conferre.conferencias.data.dac;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -36,8 +37,41 @@ java.sql.Connection  conn;
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		// TODO Auto-generated method stub
-		return null;
+		EspacioTO espparametros = (EspacioTO) parametros;
+		Collection<ObjetoTO> esp = null;
+		PreparedStatement preparedStatement = null;
+		String selectSQL = "SELECT * FROM Espacio WHERE Espacioid = ?";
+		try{
+			preparedStatement = conn.prepareStatement(selectSQL);
+			preparedStatement.setString(1, espparametros.getId());;
+			// execute select SQL statement
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()){
+				EspacioTO e = new EspacioTO();
+				e.setId(rs.getString("Espacioid"));
+				e.setNombre(rs.getString("Nombre"));
+				e.setDisponible(rs.getBoolean("Disponible"));
+				esp.add(e);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}	
+		return esp;
 	}
 
 	@Override

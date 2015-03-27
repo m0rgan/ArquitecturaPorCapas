@@ -6,18 +6,28 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class EventoTO implements ObjetoTO {
 	private String id;
+<<<<<<< HEAD
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+=======
+>>>>>>> origin/master
 	private String ubicacion;
 	private String tipo_evento;
 	private String id_conferencia;
 	private Date fecha;
 	private int hora;
 	private String numero_de_personas;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getUbicacion() {
 		return ubicacion;
 	}

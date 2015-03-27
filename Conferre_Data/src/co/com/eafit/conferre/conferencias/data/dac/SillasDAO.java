@@ -58,22 +58,21 @@ public class SillasDAO implements DAOGenerico {
 	 */
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		SillasTO list = null;
+		SillasTO sillas = null;
 		
 		try {
-			list = (SillasTO) nuevoObjeto;
+			sillas = (SillasTO) nuevoObjeto;
 			PreparedStatement prep = conn.prepareStatement("UPDATE Sillas SET Numero = ?, Tipo = ? WHERE Sillaid = ?");
-			prep.setString(1, list.getAsistentes())
-			prep.setString(2, list.getId_conferencia());
-			prep.setString(3, list.getId_evento());
-			prep.setString(4, list.getId());
+			prep.setString(1, sillas.getNumero());
+			prep.setString(2, sillas.getTipo());
+			prep.setString(3, sillas.getId());
 			int resultado = prep.executeUpdate();
 			prep.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return list;
+		return sillas;
 	}
 
 	/* (non-Javadoc)

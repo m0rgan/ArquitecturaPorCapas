@@ -49,7 +49,7 @@ public class ConferenciaDAO implements DAOGenerico {
 		ConferenciaTO confparametros = (ConferenciaTO) parametros;
 		Collection<ObjetoTO> conf = null;
 		PreparedStatement preparedStatement = null;
-		String selectSQL = "SELECT * FROM Conferencia WHERE Conferenciaid = ?";
+		String selectSQL = "SELECT * FROM Conferencias WHERE Conferenciaid = ?";
  
 		try {
 			preparedStatement = conn.prepareStatement(selectSQL);
@@ -105,9 +105,29 @@ public class ConferenciaDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
+		ConferenciaTO conf = null;
+		
+		try {
+			conf = (ConferenciaTO) nuevoObjeto;
+			PreparedStatement prep = conn.prepareStatement("UPDATE Conferencias SET Nombre = ?, NombreConferencista = ?, Tipo = ?,  Fecha = ?, SillasDisponibles = ? WHERE  Conferenciaid = ?");
+			prep.setString(1, conf.getNombre());
+			prep.setString(2, conf.getNombreConferencista());
+			prep.setString(3, conf.getTipo());
+			
+			Date fecha = new Date(conf.getFecha().getTime());
+			prep.setDate(4, fecha);
+			prep.setInt(5, conf.getSillasDisponibles());
+			prep.setString(6, conf.getId());
+			
+			int resultado = prep.executeUpdate();
+			prep.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conf;
 	}
+	
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {

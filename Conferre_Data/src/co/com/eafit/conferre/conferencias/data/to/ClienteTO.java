@@ -7,7 +7,8 @@ public class ClienteTO implements ObjetoTO {
 	private String nombre;
 	private String telefono;
 	private String correo;
-	
+	private String usuario;
+	private String contraseña;
 	public String getId() {
 		return id;
 	}
@@ -44,6 +45,4 @@ public class ClienteTO implements ObjetoTO {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-	private String usuario;
-	private String contraseña;
 }

@@ -89,7 +89,7 @@ public class ListaDeEsperaDAO implements DAOGenerico {
 		try {
 			list = (ListaDeEsperaTO) nuevoObjeto;
 			PreparedStatement prep = conn.prepareStatement("UPDATE ListaDeEspera SET Asistentes = ?, IdConferencia = ?, IdEvento = ? WHERE ListaDeEsperaid = ?");
-			prep.setString(1, list.getAsistentes())
+			prep.setArray(1, (Array) list.getAsistentes());
 			prep.setString(2, list.getId_conferencia());
 			prep.setString(3, list.getId_evento());
 			prep.setString(4, list.getId());

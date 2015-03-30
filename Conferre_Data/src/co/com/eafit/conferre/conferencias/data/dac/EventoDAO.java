@@ -100,7 +100,7 @@ public class EventoDAO implements DAOGenerico {
 			prep.setString(2, evento.getTipo_evento());
 			Date fecha = new Date(evento.getFecha().getTime());
 			prep.setDate(3, fecha);
-			prep.setString(4, evento.getHora());
+			prep.setInt(4, evento.getHora());
 			prep.setString(5, evento.getNumero_de_personas());
 			prep.setString(5, evento.getId_conferencia());
 			prep.setString(5, evento.getId());

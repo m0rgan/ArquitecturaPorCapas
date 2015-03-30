@@ -10,7 +10,7 @@ public class EventoTO implements ObjetoTO {
 	private String tipo_evento;
 	private String id_conferencia;
 	private Date fecha;
-	private String hora;
+	private int hora;
 	private String numero_de_personas;
 	
 	public String getId() {
@@ -43,11 +43,11 @@ public class EventoTO implements ObjetoTO {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public String getHora() {
+	public int getHora() {
 		return hora;
 	}
-	public void setHora(String hora) {
-		this.hora = hora;
+	public void setHora(int i) {
+		this.hora = i;
 	}
 	public String getNumero_de_personas() {
 		return numero_de_personas;

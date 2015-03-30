@@ -1,7 +1,8 @@
-package co.com.eafit.conferre.conferencias.business;
+package co.com.eafit.conferre.conferencias.business.conferencias;
 
 import java.util.UUID;
 
+import co.com.eafit.conferre.conferencias.business.base.UnitOfWork;
 import co.com.eafit.conferre.conferencias.data.base.FabricaDAO;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.dac.ConferenciaDAO;

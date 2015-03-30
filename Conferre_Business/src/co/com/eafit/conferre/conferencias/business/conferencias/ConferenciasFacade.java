@@ -1,4 +1,4 @@
-package co.com.eafit.conferre.conferencias.business;
+package co.com.eafit.conferre.conferencias.business.conferencias;
 
 import java.util.List;
 

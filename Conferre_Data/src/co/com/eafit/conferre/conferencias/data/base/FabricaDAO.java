@@ -5,13 +5,43 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import co.com.eafit.conferre.conferencias.data.dac.AsistentesDAO;
+import co.com.eafit.conferre.conferencias.data.dac.ClienteDAO;
 import co.com.eafit.conferre.conferencias.data.dac.ConferenciaDAO;
+import co.com.eafit.conferre.conferencias.data.dac.EspacioDAO;
+import co.com.eafit.conferre.conferencias.data.dac.EventoDAO;
+import co.com.eafit.conferre.conferencias.data.dac.ListaDeEsperaDAO;
+import co.com.eafit.conferre.conferencias.data.dac.SillasDAO;
 
 public class FabricaDAO {
 	
-	public static ConferenciaDAO createConferenciaDAO(){
+	public static ConferenciaDAO crearConferenciaDAO(){
 		Connection conn = crearConexion();
 		return new ConferenciaDAO(conn);
+	}
+	public static AsistentesDAO crearAsistentesDAO(){
+		Connection conn = crearConexion();
+		return new AsistentesDAO(conn);
+	}
+	public static ClienteDAO crearClienteDAO(){
+		Connection conn = crearConexion();
+		return new ClienteDAO(conn);
+	}
+	public static EspacioDAO crearEspacioDAO(){
+		Connection conn = crearConexion();
+		return new EspacioDAO(conn);
+	}
+	public static EventoDAO crearEventoDAO(){
+		Connection conn = crearConexion();
+		return new EventoDAO(conn);
+	}
+	public static ListaDeEsperaDAO crearListaDeEsperaDAO(){
+		Connection conn = crearConexion();
+		return new ListaDeEsperaDAO(conn);
+	}
+	public static SillasDAO crearSillasDAO(){
+		Connection conn = crearConexion();
+		return new SillasDAO(conn);
 	}
 	
 	public static Connection crearConexion(){

@@ -126,4 +126,10 @@ public class AsistentesDAO implements DAOGenerico {
 		return null;
 	}
 
+	@Override
+	public ObjetoTO update(ObjetoTO nuevoObjeto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

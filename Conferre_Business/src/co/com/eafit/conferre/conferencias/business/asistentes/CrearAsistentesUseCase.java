@@ -14,7 +14,7 @@ import co.com.eafit.conferre.soporte.*;
 public class CrearAsistentesUseCase implements UnitOfWork {
 
 	
-	public AsistentesTO ejecutar(AsistentesTO parametros)  {
+	public ObjetoTO ejecutar(ObjetoTO parametros)  {
 		// TODO Auto-generated method stub
 		AsistentesTO asistente = (AsistentesTO) parametros;
 	    
@@ -26,7 +26,7 @@ public class CrearAsistentesUseCase implements UnitOfWork {
 	    catch (Exception e) {
 	     resultado=null;
 	    }
-	    return resultado;
+	    return (ObjetoTO) resultado;
 
 	}
 

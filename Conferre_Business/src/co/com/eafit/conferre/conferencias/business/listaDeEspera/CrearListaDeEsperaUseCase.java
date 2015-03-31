@@ -13,14 +13,14 @@ import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class CrearListaDeEsperaUseCase implements UnitOfWork {
 @Override
-	public ListaDeEsperaTO ejecutar(ListaDeEsperaTO parametros)  {
+	public ObjetoTO ejecutar(ObjetoTO parametros)  {
 		
 	ListaDeEsperaTO lista = (ListaDeEsperaTO) parametros;
 	    
 	ListaDeEsperaDAO listaDAO = FabricaDAO.crearListaDeEsperaDAO();
 	ListaDeEsperaTO resultado;
 	    try {
-	      resultado = (ListaDeEsperaTO) ListaDeEsperaDAO.crear(lista);
+	      resultado = (ListaDeEsperaTO) listaDAO.crear(lista);
 	    }
 	    catch (Exception e) {
 	     resultado=null;

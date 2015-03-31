@@ -18,7 +18,7 @@ public class CrearEventoUseCase implements UnitOfWork {
 	    EventoDAO eventoDAO = FabricaDAO.crearEventoDAO();
 	    EventoTO result;
 	    try {
-	      result = (EventoTO) eventoDAO.create(evento);
+	      result = (EventoTO) eventoDAO.crear(evento);
 	    }
 	    catch (Exception e) {
 	     result=null;

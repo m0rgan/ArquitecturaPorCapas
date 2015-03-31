@@ -1,6 +1,7 @@
 package co.com.eafit.conferre.conferencias.business.cliente;
 
 import co.com.eafit.conferre.conferencias.business.asistentes.CrearAsistentesUseCase;
+import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
 import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
@@ -8,7 +9,7 @@ import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 public class RestClienteFacade implements ClienteFacade {
 	
 	@Override
-	   public ClienteTO crearCliente(ClienteTO cliente) throws ExcepcionUnitOfWork {
+	   public ObjetoTO crearCliente(ObjetoTO cliente) throws ExcepcionUnitOfWork {
 	    CrearClienteUseCase useCase = new CrearClienteUseCase();
 	    ClienteTO clienteResult = null;
 	    try {

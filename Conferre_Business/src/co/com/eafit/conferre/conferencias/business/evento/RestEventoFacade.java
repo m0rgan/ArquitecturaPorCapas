@@ -35,7 +35,7 @@ public class RestEventoFacade implements EventoFacade {
 	    catch (Exception e) {
 	      result=null;
 	    }
-	    return result;
+	    return (ObjetoTO) result;
 	  }
 	  
 	

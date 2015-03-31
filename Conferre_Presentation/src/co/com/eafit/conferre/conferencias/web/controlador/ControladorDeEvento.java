@@ -17,7 +17,7 @@ public class ControladorDeEvento {
 	    restEventoFacade = new RestEventoFacade();
 	  }
 	  
-	  public void crearUnNuevoAsistente() {
+	  public void crearNuevoEvento() {
 		    EventoTO EventoTO = null;
 		    ObjetoTO Evento1TO;
 		    try {

@@ -47,7 +47,7 @@ public class Cliente {
 		this.contraseña = contraseña;
 	}
 	
-	public void actualizarAistentes(ClienteTO cliente){
+	public void actualizarCliente(ClienteTO cliente){
 		id = cliente.getId();
 		nombre = cliente.getNombre();
 		telefono = cliente.getTelefono();

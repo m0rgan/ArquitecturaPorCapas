@@ -25,7 +25,7 @@ public class Espacio {
 		this.id = id;
 	}
 	
-	public void actualizarEvento(EspacioTO espacio) {
+	public void actualizarEspacio(EspacioTO espacio) {
 	    id = espacio.getId();
 	    nombre = espacio.getNombre();
 	    disponible = espacio.getDisponible();

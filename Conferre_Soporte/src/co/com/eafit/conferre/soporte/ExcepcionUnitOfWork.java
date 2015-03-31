@@ -1,4 +1,4 @@
-package co.com.eafit.conferre.soporte.excepciones;
+package co.com.eafit.conferre.soporte;
 
 public class ExcepcionUnitOfWork extends Exception {
 

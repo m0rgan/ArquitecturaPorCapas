@@ -18,7 +18,7 @@ public class CrearConferenciaUseCase implements UnitOfWork {
 		ConferenciaTO resultado = null;
 		try {
 			validarDatosConferencia(conferenciaTO);
-			ConferenciaDAO conferenciaDAO = FabricaDAO.createConferenciaDAO();
+			ConferenciaDAO conferenciaDAO = FabricaDAO.crearConferenciaDAO();
 			UUID id = UUID.randomUUID();
 			conferenciaTO.setId(id.toString());
 			resultado = (ConferenciaTO) conferenciaDAO.crear(conferenciaTO);

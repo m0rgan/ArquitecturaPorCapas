@@ -15,12 +15,12 @@ public class CrearAsistentesUseCase implements UnitOfWork {
 	@Override
 	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		// TODO Auto-generated method stub
-		CLientesTO asistente = (CLientesTO) parametros;
+		AsistentesTO asistente = (AsistentesTO) parametros;
 	    
 	    AsistentesDAO asistenteDAO = FabricaDAO.crearAsistentesDAO();
-	    CLientesTO resultado;
+	    AsistentesTO resultado;
 	    try {
-	      resultado = (CLientesTO) asistenteDAO.crear(asistente);
+	      resultado = (AsistentesTO) asistenteDAO.crear(asistente);
 	    }
 	    catch (Exception e) {
 	      throw new ExcepcionUnitOfWork(e);

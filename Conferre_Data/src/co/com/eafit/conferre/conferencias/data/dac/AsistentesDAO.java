@@ -22,8 +22,7 @@ public class AsistentesDAO implements DAOGenerico {
 		this.conn = conn2;
 	}
 
-	@Override
-	public  AsistentesTO crearAsistentes(AsistentesTO asistente) {
+	public  AsistentesTO crear(AsistentesTO asistente) throws Exception {
 		AsistentesTO asis = null;
 		try {
 			asis = (AsistentesTO) asistente;
@@ -81,8 +80,8 @@ public class AsistentesDAO implements DAOGenerico {
 		return asis;
 	}
 
-	@Override
-	public ObjetoTO update(ObjetoTO nuevoObjeto) {
+
+	public AsistentesTO update(AsistentesTO nuevoObjeto) {
 		AsistentesTO asis = null;
 		
 		try {
@@ -102,7 +101,7 @@ public class AsistentesDAO implements DAOGenerico {
 		return asis;
 	}
 
-	@Override
+	
 	public int borrar(ObjetoTO objetoaBorrar) {
 		AsistentesTO asis = null;
 		int resultado = 0;

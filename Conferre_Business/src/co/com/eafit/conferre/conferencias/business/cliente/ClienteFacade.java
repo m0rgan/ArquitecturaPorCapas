@@ -5,5 +5,5 @@ import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public interface ClienteFacade {
-	public ClienteTO crearCLiente(ClienteTO cliente) throws ExcepcionUnitOfWork;
+	public ClienteTO crearCliente(ClienteTO cliente) throws ExcepcionUnitOfWork;
 }

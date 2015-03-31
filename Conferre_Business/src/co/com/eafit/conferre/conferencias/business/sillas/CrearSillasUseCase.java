@@ -5,27 +5,24 @@ import java.util.UUID;
 import co.com.eafit.conferre.conferencias.business.base.UnitOfWork;
 import co.com.eafit.conferre.conferencias.data.base.FabricaDAO;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.dac.AsistentesDAO;
 import co.com.eafit.conferre.conferencias.data.dac.SillasDAO;
-import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
 import co.com.eafit.conferre.conferencias.data.to.SillasTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class CrearSillasUseCase implements UnitOfWork {
-@Override
-	public ObjetoTO ejecutar(ObjetoTO parametros)  {
-		// TODO Auto-generated method stub
-		SillasTO silla = (SillasTO) parametros;
-	    
-		SillasDAO sillasDAO = FabricaDAO.crearSillasDAO();
-		SillasTO resultado;
+	
+	@Override
+	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
+		SillasTO sillasTO = (SillasTO) parametros;
+		SillasTO resultado = null;
 	    try {
-	      resultado = (SillasTO) sillasDAO.crear(silla);
-	      	    }
-	    catch (Exception e) {
-	     resultado=null;
+	    	SillasDAO sillasDAO = FabricaDAO.crearSillasDAO();
+	    	UUID id = UUID.randomUUID();
+	    	sillasTO.setId(id.toString());
+	    	resultado = (SillasTO) sillasDAO.crear(sillasTO);
+	    } catch (Exception e) {
+	    	throw new ExcepcionUnitOfWork(e);
 	    }
-	    return (ObjetoTO) resultado;
-
+	    return resultado;
 	}
 }

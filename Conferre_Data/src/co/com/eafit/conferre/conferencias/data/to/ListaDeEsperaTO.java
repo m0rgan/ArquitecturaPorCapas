@@ -1,13 +1,12 @@
 package co.com.eafit.conferre.conferencias.data.to;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class ListaDeEsperaTO implements ObjetoTO {
 	private String id;
-	private ArrayList<CLientesTO> asistentes = new ArrayList<CLientesTO>();
+	private ArrayList<ClienteTO> asistentes = new ArrayList<ClienteTO>();
 	private String id_conferencia;
 	private String id_evento;
 	
@@ -17,10 +16,10 @@ public class ListaDeEsperaTO implements ObjetoTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public ArrayList<CLientesTO> getAsistentes() {
+	public ArrayList<ClienteTO> getAsistentes() {
 		return asistentes;
 	}
-	public void setAsistentes(ArrayList<CLientesTO> asistentes) {
+	public void setAsistentes(ArrayList<ClienteTO> asistentes) {
 		this.asistentes = asistentes;
 	}
 	public String getId_conferencia() {
@@ -35,5 +34,4 @@ public class ListaDeEsperaTO implements ObjetoTO {
 	public void setId_evento(String id_evento) {
 		this.id_evento = id_evento;
 	}
-
 }

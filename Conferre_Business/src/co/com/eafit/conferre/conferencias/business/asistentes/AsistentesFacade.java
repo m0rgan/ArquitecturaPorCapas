@@ -1,12 +1,10 @@
+package co.com.eafit.conferre.conferencias.business.asistentes;
 
+import java.util.List;
 
-
-import co.com.eafit.conferre.soporte.*;
-import co.com.eafit.conferre.conferencias.data.*;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.soporte.*;
 
 public interface AsistentesFacade {
-	public ObjetoTO crearAsistentes(ObjetoTO asistentes) throws ExcepcionUnitOfWork;
+	public AsistentesTO crearAsistentes(AsistentesTO asistentes);
 }

@@ -1,7 +1,6 @@
 package co.com.eafit.conferre.conferencias.data.dac;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,8 +9,6 @@ import java.util.Collection;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
-import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
 public class AsistentesDAO implements DAOGenerico {
 	

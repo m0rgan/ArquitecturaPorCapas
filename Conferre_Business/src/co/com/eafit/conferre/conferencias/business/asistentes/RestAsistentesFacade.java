@@ -1,27 +1,23 @@
-
 package co.com.eafit.conferre.conferencias.business.asistentes;
 
-import co.com.eafit.conferre.conferencias.data.*;
-import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.soporte.*;
 
+@Path("/asistentes")
 public class RestAsistentesFacade implements AsistentesFacade {
+	
 	@Override
-	   public ObjetoTO crearAsistentes(ObjetoTO asistentes) {
-	    CrearAsistentesUseCase useCase = new CrearAsistentesUseCase();
-	     AsistentesTO assistantResult = null;
+	@Path("/")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public AsistentesTO crearAsistentes(AsistentesTO asistentes) {
+		CrearAsistentesUseCase useCase = new CrearAsistentesUseCase();
+		AsistentesTO asistentesResult = null;
 	    try {
-	      assistantResult = (AsistentesTO) useCase.ejecutar(asistentes); 
+	    	asistentesResult = (AsistentesTO) useCase.ejecutar(asistentes); 
+	    } catch (Exception e) {
+	    	throw e;
 	    }
-	    catch (Exception e) {
-	      throw e;
-	    }
-	    return (ObjetoTO)assistantResult;
+	    return asistentesResult;
 	  }
-
-
-
 }
-
-

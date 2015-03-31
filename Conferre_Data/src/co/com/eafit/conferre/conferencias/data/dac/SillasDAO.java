@@ -1,10 +1,6 @@
-/**
- * 
- */
 package co.com.eafit.conferre.conferencias.data.dac;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,14 +8,8 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
-import co.com.eafit.conferre.conferencias.data.to.SillasTO;
 import co.com.eafit.conferre.conferencias.data.to.SillasTO;
 
-/**
- * @author Moreno
- *
- */
 public class SillasDAO implements DAOGenerico {
 
 	java.sql.Connection  conn;
@@ -27,7 +17,6 @@ public class SillasDAO implements DAOGenerico {
 	public SillasDAO(Connection conn2) {
 		this.conn = conn2;
 	}
-	
 	
 	@Override
 	public ObjetoTO crear(ObjetoTO parametro) {
@@ -89,9 +78,6 @@ public class SillasDAO implements DAOGenerico {
 		return silla;
 	}
 
-	/* (non-Javadoc)
-	 * @see co.com.eafit.conferre.conferencias.data.base.DAOGenerico#update(co.com.eafit.conferre.conferencias.data.base.ObjetoTO)
-	 */
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
 		SillasTO sillas = null;
@@ -111,9 +97,6 @@ public class SillasDAO implements DAOGenerico {
 		return sillas;
 	}
 
-	/* (non-Javadoc)
-	 * @see co.com.eafit.conferre.conferencias.data.base.DAOGenerico#borrar(co.com.eafit.conferre.conferencias.data.base.ObjetoTO)
-	 */
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
 		SillasTO sillas = null;

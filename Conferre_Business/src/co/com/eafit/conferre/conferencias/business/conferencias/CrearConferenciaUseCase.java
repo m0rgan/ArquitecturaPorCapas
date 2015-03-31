@@ -8,7 +8,6 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.dac.ConferenciaDAO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
-import co.com.eafit.conferre.soporte.ExcepcionValidacion;
 
 public class CrearConferenciaUseCase implements UnitOfWork {
 	
@@ -17,17 +16,13 @@ public class CrearConferenciaUseCase implements UnitOfWork {
 		ConferenciaTO conferenciaTO  = (ConferenciaTO) parametros;
 		ConferenciaTO resultado = null;
 		try {
-			
 			ConferenciaDAO conferenciaDAO = FabricaDAO.crearConferenciaDAO();
 			UUID id = UUID.randomUUID();
 			conferenciaTO.setId(id.toString());
 			resultado = (ConferenciaTO) conferenciaDAO.crear(conferenciaTO);
 		} catch (Exception e) {
 			throw new ExcepcionUnitOfWork(e);
-		}
-		
+		}	
 		return resultado;
 	}
-
-	
 }

@@ -10,21 +10,19 @@ import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class CrearEspacioUseCase implements UnitOfWork {
-
-	  @Override
-	  public ObjetoTO ejecutar(ObjetoTO params)  {
-	    EspacioTO espacio = (EspacioTO) params;
-	    EspacioDAO espacioDAO = FabricaDAO.crearEspacioDAO();
-	    EspacioTO result;
+	
+	@Override
+	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
+		EspacioTO espacioTO = (EspacioTO) parametros;
+	    EspacioTO resultado = null;
 	    try {
-	      result = (EspacioTO) espacioDAO.crear(espacio);
+	    	EspacioDAO espacioDAO = FabricaDAO.crearEspacioDAO();
+	    	UUID id = UUID.randomUUID();
+	    	espacioTO.setId(id.toString());
+	    	resultado = (EspacioTO) espacioDAO.crear(espacioTO);
+	    } catch (Exception e) {
+	    	throw new ExcepcionUnitOfWork(e);
 	    }
-	    catch (Exception e) {
-	    	result= null;
-	 
-	    }
-	    return result;
+	    return resultado;
 	  }
-	  
-
 }

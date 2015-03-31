@@ -4,38 +4,23 @@ import java.util.List;
 
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
-import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
+@Path("/conferencias")
 public class RestEspacioFacade implements EspacioFacade {
 	
-	 public ObjetoTO crearEspacio(ObjetoTO espacio) throws ExcepcionUnitOfWork {
-		    CrearEspacioUseCase useCase = new CrearEspacioUseCase();
-		    EspacioTO spaceResult = null;
-		    try {
-		      spaceResult = (EspacioTO) useCase.ejecutar(espacio); 
-		    }
-		    catch (Exception e) {
-		     spaceResult = null;
-		    }
-		    return spaceResult;
-		  }
-		  
-		  @Override
-	
-		  public ObjetoTO EncontrarEspacios() throws ExcepcionUnitOfWork {
-		    EncontrarEspacioUseCase useCase = new EncontrarEspacioUseCase();
-		    EspacioTO result =null;
-		    try {
-		    
-		      //falta crear algo para buscar result = a lo que retorne la lista
-		    	
-		    }
-		    catch (Exception e) {
-		      result=null;
-		    }
-		    return (ObjetoTO) result;
-		  }
-
-		
-
+	@Override
+	@Path("/")
+	@POST
+	@Consumes("application/json")
+	@Produces("application/json")
+	public EspacioTO crearEspacio(EspacioTO espacio) {
+		CrearEspacioUseCase useCase = new CrearEspacioUseCase();
+		EspacioTO espacioResult = null;
+	    try {
+	    	espacioResult = (EspacioTO) useCase.ejecutar(espacio);
+	    } catch (Exception e) {
+	    	throw e;
+		}
+	    return espacioResult;
+	}
 }

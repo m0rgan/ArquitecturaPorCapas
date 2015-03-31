@@ -9,8 +9,6 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
-import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 
 public class EventoDAO implements DAOGenerico {

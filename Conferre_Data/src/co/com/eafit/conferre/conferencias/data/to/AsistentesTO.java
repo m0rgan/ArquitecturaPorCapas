@@ -1,10 +1,13 @@
 package co.com.eafit.conferre.conferencias.data.to;
 
-public class AsistentesTO {
+import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
+
+public class AsistentesTO implements ObjetoTO {
 	private String id;
 	private String nombre;
 	private String telefono;
 	private String correo;
+	
 	public String getId() {
 		return id;
 	}

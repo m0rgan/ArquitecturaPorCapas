@@ -8,10 +8,7 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
-import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
-
 
 public class EspacioDAO implements DAOGenerico {
 

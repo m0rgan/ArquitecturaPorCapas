@@ -10,21 +10,19 @@ import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class CrearEventoUseCase implements UnitOfWork {
-
-	 @Override
-	  public ObjetoTO ejecutar(ObjetoTO params) throws ExcepcionUnitOfWork {
-	    EventoTO evento = (EventoTO) params;
-	 
-	    EventoDAO eventoDAO = FabricaDAO.crearEventoDAO();
-	    EventoTO result;
-	    try {
-	      result = (EventoTO) eventoDAO.crear(evento);
-	    }
-	    catch (Exception e) {
-	     result=null;
-	    }
-	    return result;
-	  }
-
 	
+	@Override
+	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
+		EventoTO eventoTO = (EventoTO) parametros;
+	    EventoTO resultado = null;
+	    try {
+	    	EventoDAO eventoDAO = FabricaDAO.crearEventoDAO();
+	    	UUID id = UUID.randomUUID();
+	    	eventoTO.setId(id.toString());
+	    	resultado = (EventoTO) eventoDAO.crear(eventoTO);
+	    } catch (Exception e) {
+	    	throw new ExcepcionUnitOfWork(e);
+	    }
+	    return resultado;
+	  }
 }

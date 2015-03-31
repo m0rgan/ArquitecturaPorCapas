@@ -10,11 +10,12 @@ import co.com.eafit.conferre.conferencias.business.base.UnitOfWork;
 public class ControladorDeAsistentes {
 	
 	private Asistentes asistentes;
+	private RestAsistentesFacade restAsistentesFacade;
 	
 	  @PostConstruct
 	  public void init() {
 	    asistentes = new Asistentes();
-	    restAssistantFacade = new RestAssistantFacade();
+	    restAsistentesFacade = new RestAsistentesFacade();
 	  }
 
 }

@@ -1,17 +1,16 @@
 package co.com.eafit.conferre.conferencia.web;
-import javax.faces.bean.ManagedBean;
 
+import javax.faces.bean.ManagedBean;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
 
 import co.com.eafit.conferre.conferencias.business.conferencias.ConferenciasFacade;
+import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.web.model.Espacio;
 
 @ManagedBean
 public class VistaListaEspacios {
-	private List<Espacio> espacios;
+	private List<ObjetoTO> espacios;
 	private ConferenciasFacade confFacade;
 	
 	@PostConstruct
@@ -19,10 +18,10 @@ public class VistaListaEspacios {
 		espacios = confFacade.obtenerEspacios();
 	}
 	
-	public List<Espacio> getEspacios() {
+	public List<ObjetoTO> getEspacios() {
 		return espacios;
 	}
-	public void setEspacios(List<Espacio> espacios) {
+	public void setEspacios(List<ObjetoTO> espacios) {
 		this.espacios = espacios;
 	}
 	public Espacio getEspacio() {
@@ -32,5 +31,4 @@ public class VistaListaEspacios {
 		this.espacio = espacio;
 	}
 	private Espacio espacio;
-	
 }

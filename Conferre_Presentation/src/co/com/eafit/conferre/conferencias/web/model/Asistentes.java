@@ -1,6 +1,6 @@
 package co.com.eafit.conferre.conferencias.web.model;
-import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
 
+import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
 
 public class Asistentes {
 

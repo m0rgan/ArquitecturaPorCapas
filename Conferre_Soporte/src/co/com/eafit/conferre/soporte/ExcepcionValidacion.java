@@ -5,5 +5,4 @@ public class ExcepcionValidacion extends Exception {
 	public ExcepcionValidacion(String string) {
 		super(string);
 	}
-
 }

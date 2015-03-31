@@ -51,11 +51,8 @@ public class FabricaDAO {
 			driver = DriverManager.getDriver("com.mysql.Driver");
 			conn = driver.connect("mysql://localhost:3693", null);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;
 	}
-	
-
 }

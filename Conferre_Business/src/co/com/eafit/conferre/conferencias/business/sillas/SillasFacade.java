@@ -1,5 +1,8 @@
 package co.com.eafit.conferre.conferencias.business.sillas;
 
-public interface SillasFacade {
+import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
+import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
+public interface SillasFacade {
+	public ObjetoTO crearSillas(ObjetoTO sillas) throws ExcepcionUnitOfWork;
 }

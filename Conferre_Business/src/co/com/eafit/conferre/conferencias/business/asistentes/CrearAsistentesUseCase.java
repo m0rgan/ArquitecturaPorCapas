@@ -19,7 +19,7 @@ public class CrearAsistentesUseCase implements UnitOfWork {
 	    AsistentesDAO asistenteDAO = FabricaDAO.crearAsistentesDAO();
 	    AsistentesTO resultado;
 	    try {
-	      resultado = (AsistentesTO) asistenteDAO.crear(parametros);
+	      resultado = (AsistentesTO) asistenteDAO.crear(asistente);
 	      	    }
 	    catch (Exception e) {
 	     resultado=null;

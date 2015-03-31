@@ -14,27 +14,23 @@ import co.com.eafit.conferre.soporte.*;
 public class CrearAsistentesUseCase implements UnitOfWork {
 
 	
-	public AsistentesTO ejecutar(AsistentesTO parametros) throws ExcepcionUnitOfWork {
+	public AsistentesTO ejecutar(AsistentesTO parametros)  {
 		// TODO Auto-generated method stub
 		AsistentesTO asistente = (AsistentesTO) parametros;
 	    
 	    AsistentesDAO asistenteDAO = FabricaDAO.crearAsistentesDAO();
 	    AsistentesTO resultado;
 	    try {
-	      resultado = (AsistentesTO) asistenteDAO.crear(asistente);
-	    }
+	      resultado = (AsistentesTO) asistenteDAO.crear(parametros);
+	      	    }
 	    catch (Exception e) {
-	      throw new ExcepcionUnitOfWork(e);
+	     resultado=null;
 	    }
 	    return resultado;
 
 	}
 
-	@Override
-	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
 

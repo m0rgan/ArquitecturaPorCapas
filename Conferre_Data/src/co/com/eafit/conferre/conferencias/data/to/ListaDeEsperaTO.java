@@ -7,7 +7,7 @@ import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 
 public class ListaDeEsperaTO implements ObjetoTO {
 	private String id;
-	private ArrayList<AsistentesTO> asistentes = new ArrayList<AsistentesTO>();
+	private ArrayList<CLientesTO> asistentes = new ArrayList<CLientesTO>();
 	private String id_conferencia;
 	private String id_evento;
 	
@@ -17,10 +17,10 @@ public class ListaDeEsperaTO implements ObjetoTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public ArrayList<AsistentesTO> getAsistentes() {
+	public ArrayList<CLientesTO> getAsistentes() {
 		return asistentes;
 	}
-	public void setAsistentes(ArrayList<AsistentesTO> asistentes) {
+	public void setAsistentes(ArrayList<CLientesTO> asistentes) {
 		this.asistentes = asistentes;
 	}
 	public String getId_conferencia() {

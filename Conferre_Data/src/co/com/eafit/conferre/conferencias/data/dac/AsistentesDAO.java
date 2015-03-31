@@ -9,9 +9,9 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
+import co.com.eafit.conferre.conferencias.data.to.CLientesTO;
+import co.com.eafit.conferre.conferencias.data.to.CLientesTO;
+import co.com.eafit.conferre.conferencias.data.to.CLientesTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
@@ -25,9 +25,9 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO crear(ObjetoTO parametro) {
-		AsistentesTO asis = null;
+		CLientesTO asis = null;
 		try {
-			asis = (AsistentesTO) parametro;
+			asis = (CLientesTO) parametro;
 			PreparedStatement prep = conn.prepareStatement("INSERT INTO asistentes values(?,?,?,?)");
 			prep.setString(1, asis.getId());
 			prep.setString(2, asis.getNombre());
@@ -42,7 +42,7 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		AsistentesTO confparametros = (AsistentesTO) parametros;
+		CLientesTO confparametros = (CLientesTO) parametros;
 		Collection<ObjetoTO> asis = null;
 		PreparedStatement preparedStatement = null;
 
@@ -54,7 +54,7 @@ public class AsistentesDAO implements DAOGenerico {
 			// execute select SQL statement
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				AsistentesTO c = new AsistentesTO();
+				CLientesTO c = new CLientesTO();
 				c.setId(rs.getString("Asistenteid"));
 				c.setNombre(rs.getString("Nombre"));
 				c.setTelefono(rs.getString("Telefono"));
@@ -84,10 +84,10 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		AsistentesTO asis = null;
+		CLientesTO asis = null;
 		
 		try {
-			asis = (AsistentesTO) nuevoObjeto;
+			asis = (CLientesTO) nuevoObjeto;
 			PreparedStatement prep = conn.prepareStatement("UPDATE Asistentes SET Nombre = ?, Telefono = ?, Correo = ? WHERE  Asistenteid = ?");
 			prep.setString(1, asis.getNombre());
 			prep.setString(2, asis.getTelefono());
@@ -105,11 +105,11 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
-		AsistentesTO asis = null;
+		CLientesTO asis = null;
 		int resultado = 0;
 		
 		try {
-			asis = (AsistentesTO) objetoaBorrar;
+			asis = (CLientesTO) objetoaBorrar;
 			PreparedStatement prep = conn.prepareStatement("DELETE FROM Asistentes WHERE Asistenteid = ?");
 			prep.setString(1, asis.getId());
 

@@ -11,7 +11,7 @@ import java.util.Collection;
 
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
-import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
+import co.com.eafit.conferre.conferencias.data.to.CLientesTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.ListaDeEsperaTO;
 import co.com.eafit.conferre.conferencias.data.to.ListaDeEsperaTO;
@@ -56,7 +56,7 @@ public class ListaDeEsperaDAO implements DAOGenerico {
 				while (rs.next()) {
 					ListaDeEsperaTO l = new ListaDeEsperaTO();
 					l.setId(rs.getString("ListaDeEsperaid"));
-					l.setAsistentes((ArrayList<AsistentesTO>) rs.getArray("Asistentes"));
+					l.setAsistentes((ArrayList<CLientesTO>) rs.getArray("Asistentes"));
 					l.setId_conferencia(rs.getString("Id Conferencia"));
 					l.setId_evento(rs.getString("Id Evento"));
 					list.add(l);

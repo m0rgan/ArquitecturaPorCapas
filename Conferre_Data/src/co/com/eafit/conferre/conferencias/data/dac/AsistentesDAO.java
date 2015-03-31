@@ -22,7 +22,7 @@ public class AsistentesDAO implements DAOGenerico {
 	}
 
 
-	
+@Override
 	public ObjetoTO crear(ObjetoTO parametro){
 
 		AsistentesTO asis = null;
@@ -100,7 +100,7 @@ public class AsistentesDAO implements DAOGenerico {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return asis;
+		return asis  ;
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class ControladorDeListaDeEspera {
 	    restListaFacade = new RestListaDeEsperaFacade();
 	  }
 	  
-	  public void crearUnNuevoAsistente() {
+	  public void crearNuevaListaDeEspera() {
 		    ListaDeEsperaTO ListaTO = null;
 		    ObjetoTO Lista1TO;
 		    try {

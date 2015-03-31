@@ -17,7 +17,7 @@ public class ControladorDeEspacio {
 	    restEspacioFacade = new RestEspacioFacade();
 	  }
 	  
-	  public void crearUnNuevoAsistente() {
+	  public void crearNuevoEspacio() {
 		    EspacioTO EspacioTO = null;
 		    ObjetoTO Espacio1TO;
 		    try {

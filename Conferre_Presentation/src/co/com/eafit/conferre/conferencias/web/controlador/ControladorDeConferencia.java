@@ -17,7 +17,7 @@ public class ControladorDeConferencia {
 	    restConferenciaFacade = new RestConferenciaFacade();
 	  }
 	  
-	  public void crearUnNuevoAsistente() {
+	  public void crearNuevaConferencia() {
 		    ConferenciaTO conferenciaTO = null;
 		    ObjetoTO conferencia1TO;
 		    try {

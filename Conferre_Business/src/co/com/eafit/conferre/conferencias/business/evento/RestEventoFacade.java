@@ -2,6 +2,7 @@ package co.com.eafit.conferre.conferencias.business.evento;
 
 import java.util.List;
 
+import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.EventoTO;
 import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
@@ -9,7 +10,7 @@ public class RestEventoFacade implements EventoFacade {
 	
 	@Override
 	 
-	  public EventoTO createEvent(EventoTO evento) throws ExcepcionUnitOfWork {
+	  public ObjetoTO crearEvento(ObjetoTO evento) throws ExcepcionUnitOfWork {
 	    CrearEventoUseCase useCase = new CrearEventoUseCase();
 	    EventoTO eventoResult = null;
 	    try {
@@ -23,8 +24,7 @@ public class RestEventoFacade implements EventoFacade {
 	  
 	  @Override
 	 
-	  public List<EventoTO> findEvents(EventoTO params) 
-	      throws ExcepcionUnitOfWork {
+	  public ObjetoTO EncontrarEvento(ObjetoTO params) throws ExcepcionUnitOfWork {
 	    if (params == null) params = new EventoTO();
 	    EncontrarEventoUseCase useCase = new EncontrarEventoUseCase();
 	    List<EventoTO> result;

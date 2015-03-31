@@ -2,18 +2,14 @@ package co.com.eafit.conferre.conferencias.business.conferencias;
 
 import java.util.List;
 
+import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.web.model.Espacio;
 
-@Path("/conferencias")
+
 public class RestConferenciaFacade implements ConferenciasFacade {
 
-	@Override
-	@Path("/")
-	@POST
-	@Consumes("application/json")
-	@Produces("application/json")
-	public ConferenciaTO crearConferencia(ConferenciaTO conferencia) {
+	public ObjetoTO crearConferencia(ObjetoTO conferencia) {
 		CrearConferenciaUseCase useCase = new CrearConferenciaUseCase();
 		ConferenciaTO conferenciaResult = null;
 		try {
@@ -25,7 +21,7 @@ public class RestConferenciaFacade implements ConferenciasFacade {
 	}
 
 	@Override
-	public List<Espacio> obtenerEspacios() {
+	public List<ObjetoTO> obtenerEspacios() {
 		// TODO Auto-generated method stub
 		return null;
 	}

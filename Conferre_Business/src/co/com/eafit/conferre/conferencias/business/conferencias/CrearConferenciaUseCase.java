@@ -17,22 +17,17 @@ public class CrearConferenciaUseCase implements UnitOfWork {
 		ConferenciaTO conferenciaTO  = (ConferenciaTO) parametros;
 		ConferenciaTO resultado = null;
 		try {
-			validarDatosConferencia(conferenciaTO);
+			
 			ConferenciaDAO conferenciaDAO = FabricaDAO.crearConferenciaDAO();
 			UUID id = UUID.randomUUID();
 			conferenciaTO.setId(id.toString());
 			resultado = (ConferenciaTO) conferenciaDAO.crear(conferenciaTO);
-		} catch (ExcepcionValidacion e) {
+		} catch (Exception e) {
 			throw new ExcepcionUnitOfWork(e);
 		}
 		
 		return resultado;
 	}
 
-	private void validarDatosConferencia(ConferenciaTO conferenciaTO) throws ExcepcionValidacion {
-		if(conferenciaTO.getNombre() == null) {
-			throw new ExcepcionValidacion("El nombre de la conferencia no puede ser nulo");
-		}
-		
-	}
+	
 }

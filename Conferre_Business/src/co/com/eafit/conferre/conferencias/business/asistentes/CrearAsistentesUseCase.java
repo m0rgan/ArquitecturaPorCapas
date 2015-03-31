@@ -7,8 +7,6 @@ import co.com.eafit.conferre.conferencias.data.base.FabricaDAO;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.dac.AsistentesDAO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.conferencias.data.to.CLientesTO;
-import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 import co.com.eafit.conferre.conferencias.data.*;
 import co.com.eafit.conferre.soporte.*;
 public class CrearAsistentesUseCase implements UnitOfWork {

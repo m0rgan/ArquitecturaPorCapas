@@ -7,11 +7,11 @@ import co.com.eafit.conferre.soporte.*;
 
 public class RestAsistentesFacade implements AsistentesFacade {
 	@Override
-	   public AsistentesTO crearAsistentesRest(AsistentesTO assistant) throws ExcepcionUnitOfWork {
-	    CreateAssistantUseCase useCase = new CreateAssistantUseCase();
+	   public AsistentesTO crearAsistentes(AsistentesTO asistentes) throws ExcepcionUnitOfWork {
+	    CrearAsistentesUseCase useCase = new CrearAsistentesUseCase();
 	    AsistentesTO assistantResult = null;
 	    try {
-	      assistantResult = (AsistentesTO) useCase.execute(assistant); 
+	      assistantResult = (AsistentesTO) useCase.ejecutar(asistentes); 
 	    }
 	    catch (ExcepcionUnitOfWork e) {
 	      throw e;
@@ -19,12 +19,7 @@ public class RestAsistentesFacade implements AsistentesFacade {
 	    return assistantResult;
 	  }
 
-	@Override
-	public AsistentesTO crearAsistentes(AsistentesTO asistentes)
-			throws ExcepcionUnitOfWork {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }
 

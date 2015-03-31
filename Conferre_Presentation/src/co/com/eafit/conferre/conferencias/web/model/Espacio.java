@@ -1,4 +1,4 @@
-package co.com.eafit.conferre.conferencia.web.model;
+package co.com.eafit.conferre.conferencias.web.model;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
 public class Espacio {

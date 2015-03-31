@@ -1,12 +1,13 @@
 package co.com.eafit.conferre.conferencia.web;
+import javax.faces.bean.ManagedBean;
 
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
-import co.com.eafit.conferre.conferencia.web.model.Espacio;
 import co.com.eafit.conferre.conferencias.business.conferencias.ConferenciasFacade;
+import co.com.eafit.conferre.conferencias.web.model.Espacio;
 
 @ManagedBean
 public class VistaListaEspacios {

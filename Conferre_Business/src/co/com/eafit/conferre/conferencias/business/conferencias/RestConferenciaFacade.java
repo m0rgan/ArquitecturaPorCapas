@@ -2,8 +2,8 @@ package co.com.eafit.conferre.conferencias.business.conferencias;
 
 import java.util.List;
 
-import co.com.eafit.conferre.conferencia.web.model.Espacio;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
+import co.com.eafit.conferre.conferencias.web.model.Espacio;
 
 @Path("/conferencias")
 public class RestConferenciaFacade implements ConferenciasFacade {

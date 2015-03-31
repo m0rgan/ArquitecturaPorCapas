@@ -10,7 +10,6 @@ import java.util.Collection;
 import co.com.eafit.conferre.conferencias.data.base.DAOGenerico;
 import co.com.eafit.conferre.conferencias.data.base.ObjetoTO;
 import co.com.eafit.conferre.conferencias.data.to.AsistentesTO;
-import co.com.eafit.conferre.conferencias.data.to.ClienteTO;
 import co.com.eafit.conferre.conferencias.data.to.ConferenciaTO;
 import co.com.eafit.conferre.conferencias.data.to.EspacioTO;
 
@@ -22,10 +21,13 @@ public class AsistentesDAO implements DAOGenerico {
 		this.conn = conn2;
 	}
 
-	public  AsistentesTO crear(AsistentesTO asistente) throws Exception {
+
+	
+	public ObjetoTO crear(ObjetoTO parametro){
+
 		AsistentesTO asis = null;
 		try {
-			asis = (AsistentesTO) asistente;
+			asis = (AsistentesTO) parametro;
 			PreparedStatement prep = conn.prepareStatement("INSERT INTO asistentes values(?,?,?,?)");
 			prep.setString(1, asis.getId());
 			prep.setString(2, asis.getNombre());
@@ -40,7 +42,7 @@ public class AsistentesDAO implements DAOGenerico {
 
 	@Override
 	public Collection<ObjetoTO> recuperar(ObjetoTO parametros) {
-		AsistentesTO confparametros = (AsistentesTO) parametros;
+		AsistentesTO asisparametros = (AsistentesTO) parametros;
 		Collection<ObjetoTO> asis = null;
 		PreparedStatement preparedStatement = null;
 
@@ -48,11 +50,11 @@ public class AsistentesDAO implements DAOGenerico {
 
 			try {
 			preparedStatement = conn.prepareStatement(selectSQL);
-			preparedStatement.setString(1, confparametros.getId());
+			preparedStatement.setString(1, asisparametros.getId());
 			// execute select SQL statement
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				ClienteTO c = new ClienteTO();
+				AsistentesTO c = new AsistentesTO();
 				c.setId(rs.getString("Asistenteid"));
 				c.setNombre(rs.getString("Nombre"));
 				c.setTelefono(rs.getString("Telefono"));
@@ -80,10 +82,10 @@ public class AsistentesDAO implements DAOGenerico {
 		return asis;
 	}
 
-
-	public AsistentesTO update(AsistentesTO nuevoObjeto) {
+	@Override
+	public ObjetoTO update(ObjetoTO nuevoObjeto) {
 		AsistentesTO asis = null;
-		
+
 		try {
 			asis = (AsistentesTO) nuevoObjeto;
 			PreparedStatement prep = conn.prepareStatement("UPDATE Asistentes SET Nombre = ?, Telefono = ?, Correo = ? WHERE  Asistenteid = ?");
@@ -101,7 +103,7 @@ public class AsistentesDAO implements DAOGenerico {
 		return asis;
 	}
 
-	
+	@Override
 	public int borrar(ObjetoTO objetoaBorrar) {
 		AsistentesTO asis = null;
 		int resultado = 0;
@@ -120,16 +122,7 @@ public class AsistentesDAO implements DAOGenerico {
 		return resultado;
 	}
 
-	@Override
-	public ObjetoTO crear(ObjetoTO parametro) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public ObjetoTO update(ObjetoTO nuevoObjeto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+ 
+    <head>
+            <h:title>
+                Lista de conferencias
+            </h:title>
+    </head>  
+      
+    <body style="background-color: grey">  
+      <p:selectOneListbox value="#{ControladorDeConferencia.conferencia}">
+        	<f:selectItems value="#{ControladorDeConferencia.conferencia}}" var="esp" itemLabel="esp.code" itemValue="esp.id">
+        	</f:selectItems>
+        </p:selectOneListbox>
+        <center>
+       
+      <p style="color: white">
+          <h2> Lista de conferencias</h2>
+       
+        </p>
+        </center>
+
+    <form>
+            <center>
+                
+                <table style="color: white" border="1">
+                    
+                    <tr>
+                        <td><strong>Id Conferencia</strong></td>
+                        <td><strong>Nombre Conferencia</strong></td>
+                        <td><strong>Nombre Conferencia</strong></td>
+                    </tr>
+                    <tr>
+                      
+                      <td>32432536</td>
+                      <td>Manana no hay futuro</td>
+                    </tr>
+
+                    <tr>
+                     
+                      <td>35435646</td>
+                      <td>El secreto de la felicidad</td>
+                    </tr>
+                    
+                     <tr>
+                     
+                      <td>32454736</td>
+                      <td>Nadie sabe por que</td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td>35443324</td>
+                      <td>Mentir no es una opcion</td>
+                    </tr>
+                    
+                     <tr>
+                      
+                      <td>32434324</td>
+                      <td>La teconologia nos absorbe</td>
+                    </tr>
+                    
+                     <tr>
+                      
+                      <td>43664564</td>
+                      <td>Nunca se debe salir del camino</td>
+                    </tr>
+                    
+                      <tr>
+                     
+                      <td>42343254</td>
+                      <td>Sentir la vida</td>
+                    </tr>
+                </table>
+                
+            </center>
+
+        </form>
+          
+    </body>  
+</html>  

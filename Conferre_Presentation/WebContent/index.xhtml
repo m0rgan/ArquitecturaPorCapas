@@ -4,17 +4,40 @@
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
     xmlns:p="http://primefaces.org/ui">  
-  
-    <h:head>  
-  
-    </h:head>  
+ 
+    <head>
+            <h:title>
+                Presentacion
+            </h:title>
+    </head>  
       
-    <h:body>  
-      
-        <p:selectOneListbox value="#{espaciosListView.espacio}">
+    <body style="background-color: grey">  
+      <p:selectOneListbox value="#{espaciosListView.espacio}">
         	<f:selectItems value="#{espaciosListView.espacio}" var="esp" itemLabel="esp.code" itemValue="esp.id">
         	</f:selectItems>
-        </p:selectOneListbox> 
+        </p:selectOneListbox>
+        <center>
+           <br/>
+            <br/>
+            <br/>
+      <p style="color: white">
+          <h2> Bienvenido a CONFERRE</h2>
+       
+        </p>
+        </center>
+
+    
+            <br/>
+            <br/>
+            <br/>
+    <form>
+            <center>        
+                <p style="color: white"><h3 >Usuario:</h3> <input type="text" name="nombre"/></p>
+                <p style="color: white"><h3>Clave:</h3> <input type="text" name="apellido"/></p>
+                <p><input type="submit" value="Enviar" /></p>
+            </center>
+
+        </form>
           
-    </h:body>  
+    </body>  
 </html>  

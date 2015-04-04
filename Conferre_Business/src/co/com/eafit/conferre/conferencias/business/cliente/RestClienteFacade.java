@@ -19,5 +19,17 @@ public class RestClienteFacade implements ClienteFacade {
 	      throw e;
 	    }
 	    return clienteResult;
-	  }
+	}
+	
+	 public ClienteTO ingresarAlSistema(ClienteTO cliente) {
+		    CrearClienteUseCase useCase = new CrearClienteUseCase();
+		    ClienteTO clienteResult;
+		    try {
+		      clienteResult = (ClienteTO) useCase.ejecutar(cliente);
+		    }
+		    catch (Exception e) {
+		      throw e;
+		    }
+		    return clienteResult;
+		  }
 }

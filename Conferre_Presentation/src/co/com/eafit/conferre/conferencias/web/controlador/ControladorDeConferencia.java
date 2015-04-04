@@ -23,13 +23,14 @@ public class ControladorDeConferencia {
 	  
 	public void crearNuevaConferencia() {	
 		ConferenciaTO conferenciaTO = null;
-	    ObjetoTO conferencia1TO;
+	   	ConferenciaTO conferenciaResult;
 	    try {
-	    	conferencia1TO = restConferenciaFacade.crearConferencia(conferencia1TO);
-	    	conferenciaTO = (ConferenciaTO)conferencia1TO;
-	    	conferencia.actualizarConferencia(conferenciaTO);
+	    	conferenciaResult	 = restConferenciaFacade.crearConferencia(conferenciaTO);
+	    	conferencia.actualizarConferencia(conferenciaResult);
 	    } catch (ExcepcionUnitOfWork ex) {
 	    	System.err.println("Error: " + ex.getMessage());
 	    }    
 	}
+	
+	
 }

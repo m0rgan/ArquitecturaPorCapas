@@ -7,24 +7,32 @@
  
     <head>
             <h:title>
+                Crear evento
             </h:title>
     </head>  
       
     <body style="background-color: grey">  
-      <p:selectOneListbox value="#{espaciosListView.espacio}">
+      <p:selectOneListbox value="#{controladorDeEvento.evento}">
         	<f:selectItems value="#{espaciosListView.espacio}" var="esp" itemLabel="esp.code" itemValue="esp.id">
         	</f:selectItems>
         </p:selectOneListbox>
         <center>
        
       <p style="color: white">
+          <h2> Crear un nuevo evento</h2>
        
         </p>
         </center>
 
     <form>
             <center>
+                <p style="color: white"><h3>Id Evento:</h3> <input type="text" name="apellido"/></p>
+                <p style="color: white"><h3 >Ubicacion:</h3> <input type="text" name="nombre"/></p>
+                <p style="color: white"><h3>Tipo de evento</h3> <input type="text" name="apellido"/></p>
+                <p style="color: white"><h3>Id de conferencia:</h3> <input type="text" name="apellido"/></p> 
                 <p style="color: white"><h3>Fecha:</h3> <input type="text" name="apellido"/></p>
+                <p style="color: white"><h3>Hora:</h3> <input type="text" name="apellido"/></p>
+                <p style="color: white"><h3>Numero de personas:</h3> <input type="text" name="apellido"/></p>
                 <p><input type="submit" value="Crear" /></p>
             </center>
 

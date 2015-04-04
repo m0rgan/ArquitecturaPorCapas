@@ -37,6 +37,6 @@ public class ControladorDeEvento {
 	}
 	
 	public void setEvento(Evento evento){
-		tihs.evento = evento;
+		this.evento = evento;
 	}
 }

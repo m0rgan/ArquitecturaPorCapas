@@ -23,10 +23,11 @@ public class ControladorDeAsistentes {
 	  
 	  public void crearUnNuevoAsistente() {
 		  AsistentesTO asistentesTO = null;
+		  AsistentesTO asistentesResult;
 		
 		  try {
-			  asistentesTO = restAsistentesFacade.crearAsistentes(asistentesTO);
-			  asistentes.actualizarAistentes(asistentesTO);
+			  asistentesResult = restAsistentesFacade.crearAsistentes(asistentesTO);
+			  asistentes.actualizarAistentes(asistentesResult);
 		  } catch (ExcepcionUnitOfWork ex) {
 			  System.err.println("Error: " + ex.getMessage());
 		  }

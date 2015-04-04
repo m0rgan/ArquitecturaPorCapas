@@ -23,13 +23,19 @@ public class ControladorDeEspacio {
 	
 	public void crearNuevoEspacio() {
 		EspacioTO EspacioTO = null;
-		ObjetoTO Espacio1TO;
+		EspacioTO EspacioResult;
 		try {
-			Espacio1TO = restEspacioFacade.crearEspacio(Espacio1TO);
-			EspacioTO = (EspacioTO)Espacio1TO;
-			espacio.actualizarEspacio(EspacioTO);
+			EspacioResult = restEspacioFacade.crearEspacio(EspacioTO);
+			espacio.actualizarEspacio(EspacioResult);
 		} catch (ExcepcionUnitOfWork ex) {
 			System.err.println("Error: " + ex.getMessage());
 		}    
 	}
+	
+	public Espacio getEspacio() {
+	    return espacio;
+	  }
+	  public void setEspacio(Espacio espacio) {
+	    this.espacio = espacio;
+	  }
 }

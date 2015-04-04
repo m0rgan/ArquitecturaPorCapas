@@ -32,5 +32,12 @@ public class ControladorDeConferencia {
 	    }    
 	}
 	
+	public Conferencia getConferencia() {
+	    return conferencia;
+	  }
+	  public void setConferencia(Conferencia conferencia) {
+	    this.conferencia = conferencia;
+	  }
+	
 	
 }

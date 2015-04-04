@@ -24,9 +24,10 @@ public class ControladorDeClientes {
 	
 	public void crearUnNuevoCliente() {
 		ClienteTO clienteTO = null;
+		ClienteTO clienteResult;
 	    try {
-	    	clienteTO= restClienteFacade.crearCliente(clienteTO);
-	    	cliente.actualizarCliente(clienteTO);
+	    	clienteResult= restClienteFacade.crearCliente(clienteTO);
+	    	cliente.actualizarCliente(clienteResult);
 	    } catch (ExcepcionUnitOfWork ex) {
 	    	System.err.println("Error: " + ex.getMessage());      
 	    }	    

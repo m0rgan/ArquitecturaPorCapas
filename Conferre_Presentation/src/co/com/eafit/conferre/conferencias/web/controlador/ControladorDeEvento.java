@@ -23,13 +23,20 @@ public class ControladorDeEvento {
   
 	public void crearNuevoEvento() {
 		EventoTO EventoTO = null;
-		ObjetoTO Evento1TO;
+		EventoTO EventoResult;
 		try {
-			Evento1TO = restEventoFacade.crearEvento(Evento1TO);
-			EventoTO = (EventoTO)Evento1TO;
-			evento.actualizarEvento(EventoTO);
+			EventoResult = restEventoFacade.crearEvento(EventoTO);
+			evento.actualizarEvento(EventoResult);
 		} catch (ExcepcionUnitOfWork ex) {
 			System.err.println("Error: " + ex.getMessage());  
 		}    
+	}
+	
+	public Evento getEvento(){
+		return evento;
+	}
+	
+	public void setEvento(Evento evento){
+		tihs.evento = evento;
 	}
 }

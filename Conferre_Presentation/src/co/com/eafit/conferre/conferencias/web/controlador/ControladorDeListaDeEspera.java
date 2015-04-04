@@ -23,13 +23,20 @@ public class ControladorDeListaDeEspera {
 	  
 	public void crearNuevaListaDeEspera() {
 		ListaDeEsperaTO ListaTO = null;
-		ObjetoTO Lista1TO;
+		ListaDeEsperaTO ListaResult;
 		try {
-			Lista1TO = restListaFacade.crearListaDeEspera(Lista1TO);
-			ListaTO = (ListaDeEsperaTO)Lista1TO;
-			lista.actualizarListaDeEsper(ListaTO);
+			ListaResult = restListaFacade.crearListaDeEspera(ListaTO);
+			lista.actualizarListaDeEsper(ListaResult);
 		} catch (ExcepcionUnitOfWork ex) {
 			System.err.println("Error: " + ex.getMessage());  
 		}    
+	}
+	
+	public ListaDeEspera getListaDeEspera(){
+		return lista;
+	}
+	
+	public void setListaDeEsper(ListaDeEspera lista){
+		this.lista = lista;
 	}
 }

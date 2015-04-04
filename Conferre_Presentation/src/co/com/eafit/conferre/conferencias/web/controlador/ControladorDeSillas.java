@@ -23,13 +23,20 @@ public class ControladorDeSillas {
 	  
 	public void crearNuevasSillas() {
 		SillasTO sillasTO = null;
-		ObjetoTO sillas1TO;
+		SillasTO sillasResult;
 		try {
-			sillas1TO = restSillasFacade.crearSillas(sillas1TO);
-			sillasTO = (SillasTO)sillas1TO;
-			sillas.actualizarSillas(sillasTO);
+			sillasResult = restSillasFacade.crearSillas(sillasTO);
+			sillas.actualizarSillas(sillasResult);
 		} catch (ExcepcionUnitOfWork ex) {
 			System.err.println("Error: " + ex.getMessage());  
 		}    
+	}
+	
+	public Sillas getSillas(){
+		return sillas;
+	}
+	
+	public void setSillas(Sillas sillas){
+		this.sillas = sillas;
 	}
 }

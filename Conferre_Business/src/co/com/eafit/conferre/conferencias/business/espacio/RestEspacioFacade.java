@@ -13,11 +13,11 @@ public class RestEspacioFacade implements EspacioFacade {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public EspacioTO crearEspacio(EspacioTO espacio) {
+	public EspacioTO crearEspacio(EspacioTO espacio1to) {
 		CrearEspacioUseCase useCase = new CrearEspacioUseCase();
 		EspacioTO espacioResult = null;
 	    try {
-	    	espacioResult = (EspacioTO) useCase.ejecutar(espacio);
+	    	espacioResult = (EspacioTO) useCase.ejecutar(espacio1to);
 	    } catch (Exception e) {
 	    	throw e;
 		}

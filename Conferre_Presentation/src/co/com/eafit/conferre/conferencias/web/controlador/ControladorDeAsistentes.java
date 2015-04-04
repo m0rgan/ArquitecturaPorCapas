@@ -23,13 +23,20 @@ public class ControladorDeAsistentes {
 	  
 	  public void crearUnNuevoAsistente() {
 		  AsistentesTO asistentesTO = null;
-		  ObjetoTO asistentes1TO;
+		
 		  try {
-			  asistentes1TO = restAsistentesFacade.crearAsistentes(asistentes1TO);
-			  asistentesTO = (AsistentesTO)asistentes1TO;
+			  asistentesTO = restAsistentesFacade.crearAsistentes(asistentesTO);
 			  asistentes.actualizarAistentes(asistentesTO);
 		  } catch (ExcepcionUnitOfWork ex) {
 			  System.err.println("Error: " + ex.getMessage());
 		  }
+	  }
+	  
+	  public void setAsistente(Asistentes asistentes) {
+		    this.asistentes = asistentes;
+	  }
+	  
+	  public Asistentes getAsistente() {
+		    return asistentes;
 	  }
 }

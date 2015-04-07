@@ -14,8 +14,11 @@ public class RestConferenciaFacade implements ConferenciasFacade {
 	@Consumes("application/json")
 	@Produces("application/json")
 	
-	ConferenciaTO conferenciaResult = null;
+	List<ConferenciaTO> conferenciasLista = null;
+	
+	
 	public ConferenciaTO crearConferencia(ConferenciaTO conferencia) {
+		ConferenciaTO conferenciaResult = null;
 		CrearConferenciaUseCase useCase = new CrearConferenciaUseCase();
 		
 		try {
@@ -35,8 +38,15 @@ public class RestConferenciaFacade implements ConferenciasFacade {
 	
 	@Override
 	public List<ConferenciaTO> obtenerListaDeConferencias() {
-		List<ConferenciaTO> conferenciasLista = null;
 		conferenciasLista.add(conferenciaResult);
 		return conferenciasLista;
+	}
+
+	public List<ConferenciaTO> getConferenciasLista() {
+		return conferenciasLista;
+	}
+
+	public void setConferenciasLista(ConferenciaTO conferencia) {
+		this.conferenciasLista.add(conferencia);
 	}
 }

@@ -1,5 +1,7 @@
 package co.com.eafit.conferre.conferencias.web.controlador;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
@@ -34,10 +36,16 @@ public class ControladorDeConferencia {
 	
 	public Conferencia getConferencia() {
 	    return conferencia;
-	  }
-	  public void setConferencia(Conferencia conferencia) {
+	}
+	  
+	public void setConferencia(Conferencia conferencia) {
 	    this.conferencia = conferencia;
-	  }
+	}
+	
+	public List<ConferenciaTO> buscarConferencias(){
+		}
+		
+	}
 	
 	
 }

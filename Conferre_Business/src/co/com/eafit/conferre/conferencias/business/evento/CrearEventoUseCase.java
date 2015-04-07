@@ -1,5 +1,7 @@
 package co.com.eafit.conferre.conferencias.business.evento;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import co.com.eafit.conferre.conferencias.business.base.UnitOfWork;
@@ -11,9 +13,12 @@ import co.com.eafit.conferre.soporte.ExcepcionUnitOfWork;
 
 public class CrearEventoUseCase implements UnitOfWork {
 	
+	List<EventoTO> EventosCreados = new ArrayList<EventoTO>();
 	@Override
 	public ObjetoTO ejecutar(ObjetoTO parametros) throws ExcepcionUnitOfWork {
 		EventoTO eventoTO = (EventoTO) parametros;
+		
+		EventosCreados.add(eventoTO);
 	    EventoTO resultado = null;
 	    try {
 	    	EventoDAO eventoDAO = FabricaDAO.crearEventoDAO();

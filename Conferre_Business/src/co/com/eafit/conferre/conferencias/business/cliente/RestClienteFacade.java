@@ -25,7 +25,7 @@ public class RestClienteFacade implements ClienteFacade {
 		    CrearClienteUseCase useCase = new CrearClienteUseCase();
 		    ClienteTO clienteResult;
 		    try {
-		      clienteResult = (ClienteTO) useCase.IngresoAlSistema(clienteResult);
+		      clienteResult = (ClienteTO) useCase.IngresoAlSistema(cliente);
 		    }
 		    catch (Exception e) {
 		      throw e;
